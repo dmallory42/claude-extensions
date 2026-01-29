@@ -1,8 +1,8 @@
 {
-  "name": "claude-code-plugins",
+  "name": "claude-extensions",
   "owner": {
     "name": "dmallory42",
-    "url": "https://github.com/dmallory42/claude-code-plugins"
+    "url": "https://github.com/dmallory42/claude-extensions"
   },
   "plugins": [
     {

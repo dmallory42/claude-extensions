@@ -1,11 +1,11 @@
-# Claude Code Plugins
+# Claude Extensions
 
 A personal marketplace of Claude Code plugins.
 
 ## Installation
 
 ```bash
-/plugin marketplace add dmallory42/claude-code-plugins
+/plugin marketplace add dmallory42/claude-extensions
 ```
 
 ## Plugins
@@ -15,7 +15,7 @@ A personal marketplace of Claude Code plugins.
 Skills addressing common LLM coding failure modes, based on [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) from extensive agent-based development.
 
 ```bash
-/plugin install guardrails@dmallory42-claude-code-plugins
+/plugin install guardrails@dmallory42-claude-extensions
 ```
 
 **The problem:**
