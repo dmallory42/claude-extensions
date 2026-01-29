@@ -1,0 +1,15 @@
+{
+  "name": "llm-coding-discipline",
+  "owner": {
+    "name": "Claude Skills",
+    "url": "https://github.com/owner/claude-skills"
+  },
+  "plugins": [
+    {
+      "name": "llm-coding-discipline",
+      "source": ".",
+      "description": "Skills addressing common LLM coding failure modes: silent assumptions, over-engineering, scope creep, and aimless iteration",
+      "version": "1.0.0"
+    }
+  ]
+}
