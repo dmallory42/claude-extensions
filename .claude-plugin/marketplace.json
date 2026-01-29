@@ -1,12 +1,12 @@
 {
-  "name": "llm-coding-discipline",
+  "name": "agent-coding-guardrails",
   "owner": {
-    "name": "Claude Skills",
-    "url": "https://github.com/dmallory42/claude-skills"
+    "name": "dmallory42",
+    "url": "https://github.com/dmallory42/agent-coding-guardrails"
   },
   "plugins": [
     {
-      "name": "llm-coding-discipline",
+      "name": "agent-coding-guardrails",
       "source": ".",
       "description": "Skills addressing common LLM coding failure modes: silent assumptions, over-engineering, scope creep, and aimless iteration",
       "version": "1.0.0"
