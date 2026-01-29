@@ -22,14 +22,16 @@ Skills addressing common LLM coding failure modes, based on [Andrej Karpathy's o
 
 > "The models make wrong assumptions on your behalf and just run along with them without checking. They don't manage their confusion, they don't seek clarifications, they don't surface inconsistencies, they don't present tradeoffs, they don't push back when they should... They really like to overcomplicate code and APIs, they bloat abstractions, they don't clean up dead code after themselves..."
 
-**Skills included:**
+**Skill:** `coding-guardrails`
 
-| Skill | Use When | Prevents |
-|-------|----------|----------|
-| **surfacing-assumptions** | About to implement anything | Silent wrong assumptions |
-| **minimal-implementation** | Implementing any feature/fix | Over-engineering, bloat |
-| **scope-discipline** | Modifying existing code | Drive-by changes, deleted comments |
-| **success-criteria-driven** | Starting implementation | Aimless iteration |
+Enforces four gates before any coding task:
+
+| Gate | Question | Prevents |
+|------|----------|----------|
+| **Success Criteria** | "Done means ___" | Aimless iteration |
+| **Assumptions** | "I'm assuming ___" | Silent wrong assumptions |
+| **Scope** | "I'll only touch ___" | Drive-by changes, scope creep |
+| **Simplicity** | "Simplest approach is ___" | Over-engineering, bloat |
 
 ## License
 

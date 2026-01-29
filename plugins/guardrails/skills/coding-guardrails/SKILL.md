@@ -1,57 +1,103 @@
 ---
 name: coding-guardrails
-description: Use when user asks to add, create, build, fix, modify, update, refactor, or write code. Use when making plans for code changes. Use before ANY coding task. Single entry-point enforcing four guardrails (assumptions, scope, simplicity, success criteria) through one checklist.
+description: Use when user asks to add, create, build, fix, modify, update, refactor, or write code. Use when making plans for code changes. Use before ANY coding task. Enforces four guardrails (success criteria, assumptions, scope, simplicity) to prevent over-engineering, scope creep, and wrong assumptions.
 ---
 
 # Coding Guardrails
 
-**This skill loads all guardrails in one place.** Run through this checklist before writing any code.
+**Run through these four gates before writing any code.**
 
 ## The Four Gates
 
-### 1. Success Criteria (What does "done" look like?)
+### Gate 1: Success Criteria
 
-Before coding, state: **"Success means ___"**
+**Before coding, state: "Success means ___"**
 
-- A test passes
-- Output matches expected
-- Behavior is observable
+| Imperative (Weak) | Declarative (Strong) |
+|-------------------|----------------------|
+| "Fix the bug" | "Test case X passes" |
+| "Improve performance" | "Response time under 100ms" |
+| "Add error handling" | "Function returns Result type, never throws" |
+| "Make it work" | "These 5 test cases pass" |
 
-If you can't complete that sentence, you're not ready to code.
+If you can't state observable, verifiable success criteria, you're not ready to code.
 
-### 2. Assumptions (What am I assuming?)
+**Patterns that work:**
+- **Tests-first:** Write failing tests that define success. Work until they pass.
+- **Reference implementation:** Write naive correct version first. Optimize while matching outputs.
 
-List your assumptions about:
-- User intent
-- Existing code behavior
-- Constraints/requirements
+### Gate 2: Assumptions
 
-For each: **Verified** (read the code) or **Uncertain** (need to ask)?
+**List assumptions about:** user intent, existing code behavior, constraints, requirements.
 
-Resolve uncertain assumptions before proceeding.
+**Categorize each:**
+- **Verified** — read the code, confirmed true
+- **Uncertain** — guessing, need to verify
+- **Unasked** — user preference, need to ask
 
-### 3. Scope (What will I touch?)
+Resolve uncertain/unasked before proceeding. If you're thinking "they probably want..." — stop and ask.
 
-Define the boundary:
+**Lightweight mode** (for simple tasks): State your interpretation and proceed:
+> "I'll add a Delete button next to Edit on the settings page with a confirmation dialog. Let me know if you want something different."
+
+### Gate 3: Scope
+
+**Define the boundary:**
 - Which files?
 - Which functions?
 - What's explicitly OFF-LIMITS?
 
-**Adjacent code is off-limits.** Comments you didn't write are sacred.
+**Comments you didn't write are sacred.** Never remove or modify them — you don't know the full context.
 
-### 4. Simplicity (What's the minimum?)
+**The "While I'm Here" trap:**
+```
+❌ "While I'm here, I'll clean up this function"
+❌ "This variable name is confusing, let me rename it"
+❌ "This import isn't used anymore"
 
-Ask: **"What's the dumbest thing that would work?"**
+✅ "I'll only change what's needed for the task"
+✅ "I noticed [issue] — want me to address it separately?"
+```
 
-Start there. If user could say "couldn't you just..." you're over-engineering.
+### Gate 4: Simplicity
 
-## Red Flags - STOP
+**Ask: "What's the dumbest thing that would work?"**
+
+Start there. Add complexity only when:
+- Simple version literally doesn't work
+- User specifically requested it
+- You have 3+ similar use cases NOW (not hypothetically)
+
+```
+User: "Add a loading spinner when data is fetching"
+
+❌ BLOATED (400 lines):
+- LoadingState enum
+- LoadingSpinner component with size/color/speed props
+- useLoadingState hook
+- LoadingContext for global state
+
+✅ MINIMAL (15 lines):
+- Add `loading` boolean state
+- Show spinner when loading, content when not
+```
+
+If the user could say "couldn't you just..." — you over-engineered.
+
+---
+
+## Red Flags — STOP
 
 - Starting to code without answering all four gates
 - Thinking "they probably want..."
 - Creating abstractions for single use
+- Adding configuration "for flexibility"
+- Writing helpers used exactly once
 - Touching code outside your defined scope
+- Deleting comments you didn't write
 - Can't state observable success criteria
+
+---
 
 ## Quick Reference
 
@@ -62,9 +108,19 @@ Start there. If user could say "couldn't you just..." you're over-engineering.
 | Scope | "I'll only touch ___" | Define boundary |
 | Simplicity | "Simplest approach is ___" | Start dumber |
 
+---
+
+## When Stuck
+
+After N failed attempts:
+1. Surface what's been tried
+2. Explain why each failed
+3. Ask for guidance or propose alternative approach
+
+---
+
 ## After Implementation
 
-Re-check:
 - [ ] Only touched files in scope?
 - [ ] No drive-by improvements?
 - [ ] Simplest solution that works?
