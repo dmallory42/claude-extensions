@@ -9,7 +9,7 @@
       "name": "guardrails",
       "source": "./plugins/guardrails",
       "description": "Skills addressing common LLM coding failure modes: silent assumptions, over-engineering, scope creep, and aimless iteration",
-      "version": "1.0.0"
+      "version": "2.0.0"
     }
   ]
 }
